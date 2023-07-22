@@ -1,0 +1,58 @@
+
+
+1
+
+1
+Here is the Dart code for a simple calculator:
+
+Dart
+import 'dart:io';
+
+class Calculator {
+  static String operation;
+  static String firstOperand;
+  static String secondOperand;
+
+  static void main() {
+    while (true) {
+      print('Enter the operation (+, -, *, /, q): ');
+      operation = stdin.readLineSync();
+
+      if (operation == 'q') {
+        break;
+      }
+
+      print('Enter the first operand: ');
+      firstOperand = stdin.readLineSync();
+
+      print('Enter the second operand: ');
+      secondOperand = stdin.readLineSync();
+
+      int result = 0;
+
+      try {
+        switch (operation) {
+          case '+':
+            result = int.parse(firstOperand) + int.parse(secondOperand);
+            break;
+          case '-':
+            result = int.parse(firstOperand) - int.parse(secondOperand);
+            break;
+          case '*':
+            result = int.parse(firstOperand) * int.parse(secondOperand);
+            break;
+          case '/':
+            result = int.parse(firstOperand) / int.parse(secondOperand);
+            break;
+          default:
+            print('Invalid operation!');
+            break;
+        }
+      } on FormatException {
+        print('Invalid input!');
+      }
+
+      print('The result is: $result');
+    }
+  }
+}
